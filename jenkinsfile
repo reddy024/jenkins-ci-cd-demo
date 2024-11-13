@@ -1,0 +1,33 @@
+pipeline {
+    agent any  // This tells Jenkins to use any available agent (node) to run the pipeline
+
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building the project...'
+                // Add any build commands here, such as: mvn build, npm install, etc.
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Running tests...'
+                // Add test commands here, such as: mvn test, npm test, etc.
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying the project...'
+                // Add deployment commands here, such as: deploy to a server, build Docker images, etc.
+            }
+        }
+    }
+    
+    post {
+        success {
+            echo 'Pipeline completed successfully!'
+        }
+        failure {
+            echo 'Pipeline failed.'
+        }
+    }
+}
